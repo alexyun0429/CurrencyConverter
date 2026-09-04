@@ -1,3 +1,4 @@
+using CurrencyConverter.Web.Models;
 using CurrencyConverter.Web.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,7 +15,18 @@ public class RatesController : Controller
 
     public async Task<IActionResult> Index(string? baseCode)
     {
-        var model = await _rates.GetRatesAsync(baseCode ?? "AUD");
-        return View(model);
+        try
+        {
+            var model = await _rates.GetRatesAsync(baseCode ?? "AUD");
+            return View(model);
+        }
+        catch (HttpRequestException)
+        {
+            return View(new RatesViewModel
+            {
+                BaseCode = baseCode ?? "AUD",
+                ErrorMessage = "The rate source is not reachable right now. Please try again in a moment."
+            });
+        }
     }
 }

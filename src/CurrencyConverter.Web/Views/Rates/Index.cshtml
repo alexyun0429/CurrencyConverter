@@ -5,6 +5,11 @@
 
 <h1 class="mb-3">What 1 @Model.BaseCode buys</h1>
 
+@if (Model.ErrorMessage != null)
+{
+    <div class="alert alert-warning">@Model.ErrorMessage</div>
+}
+
 <form method="get" class="row g-2 align-items-end mb-3">
     <div class="col-auto">
         <label for="baseCode" class="form-label">Base currency</label>
@@ -20,6 +25,8 @@
     </div>
 </form>
 
+@if (Model.Rows.Count > 0)
+{
 <p class="text-muted">Source: @Model.Source. Published @Model.RateDate?.ToString("d MMM yyyy").</p>
 
 <table class="table table-striped">
@@ -41,3 +48,4 @@
         }
     </tbody>
 </table>
+}
