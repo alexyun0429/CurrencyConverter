@@ -9,6 +9,8 @@ builder.Services.AddHttpClient<IExchangeRateClient, FrankfurterClient>(client =>
     client.BaseAddress = new Uri(builder.Configuration["Frankfurter:BaseUrl"]!);
 });
 
+builder.Services.AddScoped<IRateService, RateService>();
+
 var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())
