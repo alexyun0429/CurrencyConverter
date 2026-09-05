@@ -8,7 +8,8 @@ builder.Services.AddMemoryCache();
 builder.Services.AddHttpClient<IExchangeRateClient, FrankfurterClient>(client =>
 {
     client.BaseAddress = new Uri(builder.Configuration["Frankfurter:BaseUrl"]!);
-});
+})
+.AddStandardResilienceHandler();
 
 builder.Services.AddScoped<IRateService, RateService>();
 
