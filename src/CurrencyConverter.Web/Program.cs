@@ -3,6 +3,7 @@ using CurrencyConverter.Web.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
+builder.Services.AddMemoryCache();
 
 builder.Services.AddHttpClient<IExchangeRateClient, FrankfurterClient>(client =>
 {
