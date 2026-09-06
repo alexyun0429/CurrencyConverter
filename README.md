@@ -31,9 +31,10 @@ Six tests, no network access needed. They take well under a second.
 ## JSON endpoint
 
 The same data is available as JSON for other systems to consume:
+Note: swap 'xxxx' with actual local address
 
 ```bash
-curl http://localhost:5241/api/rates/AUD
+curl http://localhost:xxxx/api/rates/AUD
 ```
 
 Replace the port with the one your app printed. An unknown currency code returns HTTP 400
